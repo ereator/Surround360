@@ -240,8 +240,9 @@ if __name__ == "__main__":
     binary_files = [join(data_dir, f) for f in os.listdir(data_dir) if f.endswith('.bin')]
     unpack_extra_params = ""
     if save_raw:
-      unpack_extra_params += " --output_raw_dir " + raw_dir
       raw_dir = dest_dir + "/raw"
+      os.system("mkdir -p " + raw_dir)
+      unpack_extra_params += " --output_raw_dir " + raw_dir
       if os.path.isdir(raw_dir) and len([f for f in os.listdir(raw_dir) if not f.startswith('.')]) > 0:
         print "ERROR: raw directory not empty!\n"
         sys.stdout.flush()
